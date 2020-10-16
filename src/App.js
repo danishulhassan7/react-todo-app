@@ -27,6 +27,13 @@ class App extends Component {
       value: ''
     })
   }
+
+  delete_todo = (index) => {
+    this.state.todos.splice(index,1);
+    this.setState({
+      todos: this.state.todos
+    });
+  }
   render() {
     let {todos,value} = this.state;
     return(
@@ -37,7 +44,9 @@ class App extends Component {
           {
             todos.map((v,i)=>{
             return (
-              <li key={i}> {v} </li>
+              <li key={i}> {v}
+                <button onClick={() => this.delete_todo(i)}> DELETE</button>
+               </li>
             );
             })
           }
