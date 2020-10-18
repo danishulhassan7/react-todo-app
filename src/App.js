@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import WhatsappWallpaper from "./images/Whatsapp-Wallpaper.jpg";
 import './App.css';
 
 class App extends Component {
@@ -75,6 +76,7 @@ class App extends Component {
       <div className="container">
             <div className="row">
             <div className="col-12">
+            <h1 className="hero"> To-do List by XPF</h1> <br/>
             <input value={value} onChange={(e) => this.setState({value: e.target.value})} type="text" placeholder="Enter any task"/>
             <button onClick={this.add_todo} className="btn btn-primary mr-2 btn-sm mb-1 task-btn addtask">ADD TASK</button>
             <button onClick={this.delete_all} className="btn btn-danger btn-sm mb-1 task-btn dltall">DELETE ALL</button>
