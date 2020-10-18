@@ -1,4 +1,51 @@
 
-/* body {
+body {
   text-align:center;
-} */
+  height: 100vh;
+}
+
+.container {
+  width: 65% !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+  background-color: rgb(246, 206, 202) !important;
+  border: 6px solid rgb(240, 70, 70);
+  border-radius: 15px;
+  height: 100vh !important; 
+}
+.row {
+  margin-top: 3% !important;
+  text-align: center !important;
+}
+
+input {
+  border-radius:20px;
+  padding-left: 7px;
+  margin-right: 7px;
+  border: none;
+}
+
+.task-btn {
+  border: none;
+  border-radius: 13px;
+  font-weight: bolder;
+}
+
+.addtask {
+  background: rgba(19, 19, 175, 0.911);
+}
+
+.dltall {
+  background: rgba(255, 0, 0, 0.835);
+}
+
+.editbtn {
+  background: rgba(255, 255, 0, 0.877);
+}
+.updbtn {
+  background: rgba(63, 205, 50, 0.918);
+}
+
+.dltbtn {
+  background: rgba(0, 0, 0, 0.87);
+}

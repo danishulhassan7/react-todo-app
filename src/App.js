@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -7,7 +7,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      todos: [{title:'Smith', edit: false},{title:'Virat', edit: false}],
+      todos: [{ title: 'Smith', edit: false }, { title: 'Virat', edit: false }],
       value: ''
     };
   }
@@ -22,7 +22,7 @@ class App extends Component {
   // 2nd Method to add_todo 
 
   add_todo = () => {
-    let obj = {title : this.state.value};
+    let obj = { title: this.state.value };
     this.setState({
       todos: [...this.state.todos, obj],
       value: ''
@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   delete_todo = (index) => {
-    this.state.todos.splice(index,1);
+    this.state.todos.splice(index, 1);
     this.setState({
       todos: this.state.todos
     });
@@ -48,14 +48,14 @@ class App extends Component {
 
   // Using input 
 
-  edit_todo = (index,val) => {
+  edit_todo = (index, val) => {
     this.state.todos[index].edit = true;
     this.setState({
       todos: this.state.todos
     });
   }
 
-  handle_change = (e,index) => {
+  handle_change = (e, index) => {
     this.state.todos[index].title = e.target.value;
     this.setState({
       todos: this.state.todos
@@ -68,30 +68,35 @@ class App extends Component {
       todos: this.state.todos
     });
   }
+
   render() {
-    let {todos,value} = this.state;
-    return(
-      <div>
-        <input value={value} onChange={(e) => this.setState({value: e.target.value})} type="text" placeholder="Enter any task"/>
-        <button onClick={this.delete_all}>DELETE ALL</button>
-        <button onClick={this.add_todo}>ADD TASK</button>
-        <ul>
-          {
-            todos.map((v,i)=>{
-            return (
-              <li key={i}>
-                {v.edit ? <input type="text" value={v.title} onChange={(e) => this.handle_change(e,i)} placeholder="Enter the updated value" /> : v.title }
-                {v.edit ?
-                <button onClick={() => this.update_value(i)}>UPDATE</button>
-                : 
-                <button onClick={() => this.edit_todo(i,v.title)}>EDIT</button> }
-                <button onClick={() => this.delete_todo(i)}> DELETE</button>
-               </li>
-            );
-            })
-          }
-        </ul>
-      </div>
+    let { todos, value } = this.state;
+    return (
+      <div className="container">
+            <div className="row">
+            <div className="col-12">
+            <input value={value} onChange={(e) => this.setState({value: e.target.value})} type="text" placeholder="Enter any task"/>
+            <button onClick={this.add_todo} className="btn btn-primary mr-2 btn-sm mb-1 task-btn addtask">ADD TASK</button>
+            <button onClick={this.delete_all} className="btn btn-danger btn-sm mb-1 task-btn dltall">DELETE ALL</button>
+            </div>
+            </div>
+            <ul className="list-unstyled">
+              {
+                todos.map((v, i) => {
+                  return (
+                    <li key={i}>
+                      {v.edit ? <input type="text" value={v.title} onChange={(e) => this.handle_change(e, i)} placeholder="Enter the updated value" /> : v.title}
+                      {v.edit ?
+                        <button onClick={() => this.update_value(i)} className="task-btn btn btn-info btn-sm ml-1 mb-1 updbtn">UPDATE</button>
+                        :
+                        <button onClick={() => this.edit_todo(i, v.title)} className="task-btn btn btn-warning btn-sm mb-1 ml-2 editbtn">EDIT</button>}
+                      <button onClick={() => this.delete_todo(i)} className="task-btn btn btn-dark ml-1 mb-1 btn-sm dltbtn"> DELETE</button>
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </div>
     );
   }
 }
